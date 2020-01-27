@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Tic_Tac_Toe_Assignment.dir/main.c.obj"
-  "Tic_Tac_Toe_Assignment.exe"
-  "Tic_Tac_Toe_Assignment.exe.manifest"
+  "CMakeFiles/Tic_Tac_Toe_Assignment.dir/main.c.o"
+  "Tic_Tac_Toe_Assignment"
   "Tic_Tac_Toe_Assignment.pdb"
-  "libTic_Tac_Toe_Assignment.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

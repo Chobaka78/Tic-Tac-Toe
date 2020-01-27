@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/ufben/Documents/GitHub/Tic-Tac-Toe-Assignment/main.c" "C:/Users/ufben/Documents/GitHub/Tic-Tac-Toe-Assignment/cmake-build-debug/CMakeFiles/Tic_Tac_Toe_Assignment.dir/main.c.obj"
+  "/home/usman/Documents/Github/Tic-Tac-Toe-Assignment/main.c" "/home/usman/Documents/Github/Tic-Tac-Toe-Assignment/cmake-build-debug/CMakeFiles/Tic_Tac_Toe_Assignment.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
