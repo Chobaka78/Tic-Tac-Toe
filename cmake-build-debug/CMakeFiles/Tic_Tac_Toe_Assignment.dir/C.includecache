@@ -9,4 +9,10 @@
 /home/usman/Documents/Github/Tic-Tac-Toe-Assignment/main.c
 stdio.h
 -
+stdlib.h
+/home/usman/Documents/Github/Tic-Tac-Toe-Assignment/stdlib.h
+math.h
+/home/usman/Documents/Github/Tic-Tac-Toe-Assignment/math.h
+stdbool.h
+/home/usman/Documents/Github/Tic-Tac-Toe-Assignment/stdbool.h
 
