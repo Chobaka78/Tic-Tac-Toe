@@ -9,8 +9,8 @@
 #include "math.h"
 #include "stdbool.h"
 
-int _input(); // A helper function used for integer input
-char str_input(); // A helper function used for String input
+int _input();
+char str_input();
 static bool valid = true; // static variable valid either true or false
 
 // Question 1 - Initialize the board
@@ -38,21 +38,27 @@ void PrintBoard(int m, int n, char board[][n]){ // prints the board in the desir
 }
 // Question 3 - create a tic-tac-toe board
 void createBoard(int m, int n, char board[][n]){ // creates a board given user values
+    int num;
+    char type;
     while(1) {
         PrintBoard(m, n, board);
         puts("Enter the number of cell where you want to put x or 0, enter -1 to exit:");
-        int num = _input();
-        if(num == -1){
-            break;
-        }
-        puts("Enter x or o:");
-        char type = str_input();
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == num + '0') {
-                    board[i][j] = type;
+        num = _input();
+        if(num > 0 && num < 10) {
+            type = str_input();
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (board[i][j] == num + '0') {
+                        board[i][j] = type;
+                    }
                 }
             }
+        }
+        if((num < 0 || num > 0) && num != -1){
+            continue;
+        }
+        if(num == -1){
+            break;
         }
     }
 }
@@ -117,23 +123,17 @@ int main(void){ // main function
 }
 int _input(){
     int x;
-    while(1){
-        scanf("%d", &x);
-        if((x > 0 && x < 10) || x == -1){
-            break;}else{
-            puts("Invalid input");
-            continue;}
-    }
+    scanf("%d", &x);
     return x;
 }
 char str_input(){
-    char x[0];
+    char x;
     while(1) {
-        scanf("%s", x);
-        if (x[0] != 'x' && x[0] != 'o') {
-            puts("Invalid input!");
+        puts("Enter x or o");
+        scanf(" %c", &x);
+        if (x != 'x' && x != 'o') {
             continue;} else {
             break;}
     }
-    return x[0];
+    return x;
 }
