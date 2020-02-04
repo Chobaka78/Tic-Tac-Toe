@@ -96,7 +96,7 @@ void ListWinningCells(int m, int n, char board[][n]){ // checks if there is a po
 }
 int main(void){ // main function
     int m = 3, n = 3;
-    char board[m][n], ans[0]; // 3 x 3 board
+    char board[m][n], ans; // 3 x 3 board
     bool running = true; // running boolean
     InitializeBoard(m,n,board); //calls InitializeBoard - Question 1
     while(running){
@@ -105,8 +105,8 @@ int main(void){ // main function
                "press 't' to test if a tic-tac-toe board is valid or invalid board\n"
                "press 'w' to predict winning cell for player X or O\n"
                "press 'e' to exit\n");
-        scanf("%s", ans);
-        switch (ans[0]){
+        scanf(" %c", &ans);
+        switch (ans){
             case 'p': PrintBoard(m, n, board);
                 break;
             case 'c': createBoard(m ,n, board);
