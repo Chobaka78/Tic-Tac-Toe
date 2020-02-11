@@ -8,6 +8,8 @@
 #include "stdlib.h"
 #include "math.h"
 #include "stdbool.h"
+#define Player1 'X'
+#define Player2 'O'
 
 int _input();
 char str_input();
@@ -42,7 +44,7 @@ void createBoard(int m, int n, char board[][n]){ // creates a board given user v
     char type;
     while(1) {
         PrintBoard(m, n, board);
-        puts("Enter the number of cell where you want to put x or 0, enter -1 to exit:");
+        puts("Enter the number of cell where you want to put X or O, enter -1 to exit:");
         num = _input();
         if(num > 0 && num < 10) {
             type = str_input();
@@ -67,10 +69,10 @@ int IsValidBoard(int m, int n, char board[][n]){ // checks if the current board 
     int x_count = 0, o_count = 0;
     for(int i = 0; i < m; i ++){
         for(int j = 0; j < n; j ++){
-            if(board[i][j] == 'x'){
+            if(board[i][j] == Player1){
                 x_count ++;
             }
-            else if(board[i][j] == 'o'){
+            else if(board[i][j] == Player2){
                 o_count ++;
             }
         }
@@ -89,11 +91,25 @@ int IsValidBoard(int m, int n, char board[][n]){ // checks if the current board 
     }
 }
 
-
-void check_Row(int m, int n, char board[][n]){
+int found(int m, int n, char board[][n]){
+    int pos = 0;
     for(int i = 0; i < m; i ++){
         for(int j = 0; j < n; j ++){
-//            if(board[i][j] == )
+            if(board[i][j] != Player1 && board[i][j] != Player2){
+                pos = board[i][j];
+            }
+        }
+    }
+    return pos;
+}
+
+
+void check(int m, int n, char board[][n]){
+    int x_counter = 0, o_counter = 0;
+
+    for(int i = 0; i < m; i ++){
+        for(int j = 0; j < n; j ++){
+            (board[i][j] == Player1 ? x_counter++ : board[i][j] == Player2 ? o_counter++ : )
         }
     }
 
@@ -102,7 +118,7 @@ void check_Row(int m, int n, char board[][n]){
 //Question 5 - Checks for winning move
 void ListWinningCells(int m, int n, char board[][n]){ // checks if there is a possible winning move
     if(valid){
-        check_Row(m, n, board);
+        check(m, n, board);
 
     }
 }
