@@ -26,7 +26,7 @@ void InitializeBoard (int m, int n, char board[][n]){ // Makes a empty board upo
 // Question 2 - print a tic-tac-toe board
 void PrintBoard(int m, int n, char board[][n]){ // prints the board in the desired format
     for(int i = 0; i < m; i ++){
-        printf("\t   |\t   |\n");
+        printf("       |       |       \n");
         for(int j = 0; j < n; j ++) {
             j == 1 ? printf("|   %c   |", board[i][j]) : printf("   %c   ", board[i][j]);
         }
@@ -34,7 +34,7 @@ void PrintBoard(int m, int n, char board[][n]){ // prints the board in the desir
             printf("\n_______|_______|_______\n");
         }
     }
-    printf("\n\t   |\t   |\n");
+    printf("\n       |       |       \n\n");
 }
 // Question 3 - create a tic-tac-toe board
 void createBoard(int m, int n, char board[][n]){ // creates a board given user values
@@ -88,11 +88,23 @@ int IsValidBoard(int m, int n, char board[][n]){ // checks if the current board 
         return 0;
     }
 }
+
+
+void check_Row(int m, int n, char board[][n]){
+    for(int i = 0; i < m; i ++){
+        for(int j = 0; j < n; j ++){
+//            if(board[i][j] == )
+        }
+    }
+
+}
+
 //Question 5 - Checks for winning move
 void ListWinningCells(int m, int n, char board[][n]){ // checks if there is a possible winning move
-//    if(valid){
-//
-//    }
+    if(valid){
+        check_Row(m, n, board);
+
+    }
 }
 int main(void){ // main function
     int m = 3, n = 3;
