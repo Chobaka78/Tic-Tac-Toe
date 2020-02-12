@@ -83,35 +83,51 @@ int IsValidBoard(int m, int n, char board[][n]){ // checks if the current board 
     }
 }
 
-int *Array(int arr[], int size, int arr1[]){
-    for(int i = 0; i < size; i ++){
-        if(arr[i] != 0 && arr1[i] != arr[i]){
-            arr1[i] = arr[i];
-        }
-    }
-    return arr1;
-}
 
 //Question 5 - Checks for winning move
 void ListWinningCells(int m, int n, char board[][n]){ // checks if there is a possible winning move
-    int num[] = {0};
-    int xcount = 0, ocount = 0, xpos[9] = {0}, ypos[9] = {0}, *val;
+    int xcount, ocount, x_arrcount = -1, o_arrcount = -1;
+    char x_win[3] = {""}, o_win[3] = {""},  xpos;
     if(IsValidBoard(m, n, board)){ // checks if the board is valid
         for(int i = 0; i < m; i ++){
+            xcount = 0, ocount = 0, xpos = ' ';
             for(int j = 0; j < n; j ++){
-                (board[i][j] == 'X') ? xcount++ : board[i][j] == 'O' ? ocount ++ : (xpos[(i*3) + j] = board[i][j] - '0');
+                (board[i][j] == 'X') ? xcount++ : (board[i][j] == 'O') ? ocount++ : (xpos = board[i][j]);
+            }
+            if(xcount == 2 && ocount == 0){
+                x_win[++x_arrcount] = xpos;
+            }
+            if(xcount == 0 && ocount == 2){
+                o_win[++o_arrcount] = xpos;
             }
 
         }
 
-        if(xcount == 2 && ocount == 0){
-            val = Array(xpos, 9, num);
-            printf("X: ");
-            for(int i = 0; i < sizeof(val); i ++){
-                printf("%d ", val[i]);
+        for(int i = 0; i < m; i ++){
+            xcount = 0, ocount = 0, xpos = ' ';
+            for(int j = 0; j < n; j ++){
+                (board[j][i] == 'X') ? xcount++ : (board[j][i] == 'O') ? ocount++ : (xpos = board[j][i]);
             }
-            printf("\n");
+            if(xcount == 2 && ocount == 0){
+                x_win[++x_arrcount] = xpos;
+            }
+            if(xcount == 0 && ocount == 2){
+                o_win[++o_arrcount] = xpos;
+            }
         }
+        
+
+        printf("X: ");
+        for(int i = 0; i < sizeof(x_win)/ sizeof(x_win[0]); i ++){
+            printf("%c ", x_win[i]);
+        }
+        printf("\n");
+
+        printf("O: ");
+        for(int i = 0; i < sizeof(x_win)/ sizeof(x_win[0]); i ++){
+            printf("%c ", o_win[i]);
+        }
+        printf("\n");
     }
 
 }
