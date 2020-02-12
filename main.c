@@ -13,8 +13,6 @@
 
 int _input();
 char str_input();
-static bool valid = true; // static variable valid either true or false
-
 // Question 1 - Initialize the board
 void InitializeBoard (int m, int n, char board[][n]){ // Makes a empty board upon start up
     int c = 1;
@@ -77,50 +75,45 @@ int IsValidBoard(int m, int n, char board[][n]){ // checks if the current board 
             }
         }
     }
-    if(x_count == 0 && o_count == 0){
-        valid = true; // sets valid to true
-        return 1;
-    }
-    else if(abs(x_count - o_count) == 0 || abs(x_count - o_count) == 1){
-        valid = true; // sets valid to true
+    if(abs(x_count - o_count) == 0 || abs(x_count - o_count) == 1){
         return 1;
     }
     else{
-        valid = false; // sets valid to false
         return 0;
     }
 }
 
-int found(int m, int n, char board[][n]){
-    int pos = 0;
-    for(int i = 0; i < m; i ++){
-        for(int j = 0; j < n; j ++){
-            if(board[i][j] != Player1 && board[i][j] != Player2){
-                pos = board[i][j];
-            }
+int *Array(int arr[], int size, int arr1[]){
+    for(int i = 0; i < size; i ++){
+        if(arr[i] != 0 && arr1[i] != arr[i]){
+            arr1[i] = arr[i];
         }
     }
-    return pos;
-}
-
-
-void check(int m, int n, char board[][n]){
-    int x_counter = 0, o_counter = 0;
-
-    for(int i = 0; i < m; i ++){
-        for(int j = 0; j < n; j ++){
-            (board[i][j] == Player1 ? x_counter++ : board[i][j] == Player2 ? o_counter++ : )
-        }
-    }
-
+    return arr1;
 }
 
 //Question 5 - Checks for winning move
 void ListWinningCells(int m, int n, char board[][n]){ // checks if there is a possible winning move
-    if(valid){
-        check(m, n, board);
+    int num[] = {0};
+    int xcount = 0, ocount = 0, xpos[9] = {0}, ypos[9] = {0}, *val;
+    if(IsValidBoard(m, n, board)){ // checks if the board is valid
+        for(int i = 0; i < m; i ++){
+            for(int j = 0; j < n; j ++){
+                (board[i][j] == 'X') ? xcount++ : board[i][j] == 'O' ? ocount ++ : (xpos[(i*3) + j] = board[i][j] - '0');
+            }
 
+        }
+
+        if(xcount == 2 && ocount == 0){
+            val = Array(xpos, 9, num);
+            printf("X: ");
+            for(int i = 0; i < sizeof(val); i ++){
+                printf("%d ", val[i]);
+            }
+            printf("\n");
+        }
     }
+
 }
 int main(void){ // main function
     int m = 3, n = 3;
@@ -159,7 +152,7 @@ char str_input(){
     while(1) {
         puts("Enter x or o");
         scanf(" %c", &x);
-        if (x != 'x' && x != 'o') {
+        if (x != 'X' && x != 'O') {
             continue;} else {
             break;}
     }
